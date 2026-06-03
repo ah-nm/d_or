@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0c0a09" media="(prefers-color-scheme: dark)">
+  <title>Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="topbar" id="topbar">
+    <div class="searchbar">
+      <svg class="searchbar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="search" id="search" placeholder="선유훈 · 공통 · A · 01 · A_01" autocomplete="off" spellcheck="false">
+      <button type="button" class="searchbar__clear" id="clear" aria-label="지우기" hidden>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="filters">
+      <div class="seg" role="tablist" aria-label="캐릭터">
+        <button type="button" class="seg__btn is-active" data-char="">전체</button>
+        <button type="button" class="seg__btn" data-char="char1">선유훈</button>
+        <button type="button" class="seg__btn" data-char="char2">정해언</button>
+      </div>
+      <div class="chips" role="group" aria-label="폴더">
+        <button type="button" class="chip is-active" data-folder="">전체</button>
+        <button type="button" class="chip" data-folder="F">F</button>
+        <button type="button" class="chip" data-folder="M">M</button>
+        <button type="button" class="chip" data-folder="common">공통</button>
+      </div>
+    </div>
+
+    <div class="count" id="count" aria-live="polite"></div>
+  </header>
+
+  <main>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>
+      <p>결과 없음</p>
+    </div>
+    <div class="setup" id="setup" hidden>
+      <h2>설정 필요</h2>
+      <p><code>manifest.json</code>을 찾을 수 없어요.</p>
+      <p>이미지를 <code>images/</code> 폴더에 넣고 빌드 스크립트를 실행해주세요.</p>
+    </div>
+  </main>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="이미지 보기">
+    <button type="button" class="lb-btn lb-btn--close" id="lbClose" aria-label="닫기">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <button type="button" class="lb-btn lb-btn--prev" id="lbPrev" aria-label="이전">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <polyline points="15 18 9 12 15 6"></polyline>
+      </svg>
+    </button>
+    <button type="button" class="lb-btn lb-btn--next" id="lbNext" aria-label="다음">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <div class="lb-stage" id="lbStage">
+      <img class="lb-img" id="lbImg" alt="">
+    </div>
+    <div class="lb-info" id="lbInfo"></div>
+  </div>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
